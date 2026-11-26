@@ -1,0 +1,389 @@
+:root {
+    --tinta: #23194d;
+    --fundo: #e6e3ef;
+    --papel: #ffffff;
+    --rosa: #e0306a;
+    --lilas: #c9c2e3;
+    --verde: #1d7347;
+    --cinza: #5d5778;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--fundo);
+    color: var(--tinta);
+    line-height: 1.5;
+}
+
+button,
+input,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+:focus-visible {
+    outline: 3px solid #2f7fd1;
+    outline-offset: 2px;
+}
+
+/* ---------- topo ---------- */
+.topo {
+    background: var(--tinta);
+    color: var(--papel);
+    padding: 28px max(20px, calc((100% - 1100px) / 2)) 64px;
+}
+
+.topo h1 {
+    font-size: clamp(2.2rem, 8vw, 4rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.topo p {
+    max-width: 60ch;
+    margin-top: 8px;
+    color: #d9d4f0;
+}
+
+.aviso {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 20px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 370px 1fr;
+    gap: 28px;
+    max-width: 1140px;
+    margin: -40px auto 0;
+    padding: 0 20px 32px;
+    align-items: start;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+/* ---------- ficha em formato de credencial ---------- */
+.credencial {
+    position: relative;
+    background: var(--papel);
+    border-radius: 16px;
+    padding: 44px 24px 24px;
+    box-shadow: 0 10px 30px rgba(35, 25, 77, 0.25);
+}
+
+/* furo da credencial com a fita do cordão */
+.cordao {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    width: 64px;
+    height: 12px;
+    margin-left: -32px;
+    border-radius: 6px;
+    background: var(--fundo);
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.cordao::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    width: 28px;
+    height: 34px;
+    margin-left: -14px;
+    background: var(--rosa);
+    border-radius: 3px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+form input,
+form select,
+.filtros input,
+.filtros select {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 9px 10px;
+    font-weight: normal;
+    background: var(--papel);
+    border: 2px solid var(--lilas);
+    border-radius: 8px;
+}
+
+.linha {
+    display: grid;
+    grid-template-columns: 1fr 90px;
+    gap: 12px;
+}
+
+fieldset {
+    border: 0;
+    margin-bottom: 8px;
+}
+
+legend {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.modalidade {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    margin-bottom: 8px;
+    border: 2px solid var(--lilas);
+    border-radius: 8px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.modalidade input {
+    width: auto;
+    margin: 0;
+    accent-color: var(--rosa);
+}
+
+.modalidade span:last-child {
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: var(--cinza);
+}
+
+.modalidade:has(input:checked) {
+    border-color: var(--rosa);
+    background: #fdeef3;
+}
+
+.modalidade.esgotada {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.erro {
+    color: #b42318;
+    min-height: 1.5em;
+    margin-bottom: 8px;
+}
+
+form button {
+    width: 100%;
+    padding: 13px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--rosa);
+    color: var(--papel);
+    font-weight: bold;
+}
+
+form button:hover {
+    background: #c42459;
+}
+
+.confirmacao {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border: 3px dashed var(--verde);
+    border-radius: 10px;
+    color: var(--verde);
+}
+
+.confirmacao strong {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.2;
+}
+
+/* ---------- painel da direita ---------- */
+.painel {
+    display: grid;
+    gap: 20px;
+    min-width: 0;
+}
+
+.painel > section {
+    background: var(--papel);
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 0;
+}
+
+.vagas {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.vagas li {
+    font-weight: 600;
+}
+
+.vagas .numeros {
+    display: block;
+    font-weight: normal;
+    color: var(--cinza);
+    font-size: 0.9rem;
+}
+
+.barra {
+    height: 10px;
+    margin-top: 6px;
+    background: var(--fundo);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.barra span {
+    display: block;
+    height: 100%;
+    background: var(--tinta);
+    border-radius: 5px;
+}
+
+.vagas .cheia .barra span {
+    background: var(--rosa);
+}
+
+.filtros {
+    display: grid;
+    grid-template-columns: 1fr 170px;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.filtros label {
+    font-weight: 600;
+}
+
+.tabela {
+    position: relative;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 9px 8px;
+    border-bottom: 1px solid #e3e0ee;
+}
+
+td.periodo {
+    color: var(--cinza);
+    white-space: nowrap;
+}
+
+.cancelar {
+    background: none;
+    border: 0;
+    color: #b42318;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+.cancelar.confirmar {
+    font-weight: bold;
+}
+
+.vazio {
+    margin-top: 12px;
+    color: var(--cinza);
+}
+
+/* caixa que mostra o SQL executado */
+.painel > .sql {
+    background: #1f1838;
+    color: #ece9f7;
+}
+
+.sql pre {
+    padding: 14px;
+    background: #140f27;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: Consolas, "DejaVu Sans Mono", "Courier New", monospace;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+#sql-detalhes {
+    margin-top: 10px;
+    color: #c9c2e3;
+    overflow-wrap: anywhere;
+}
+
+/* ---------- rodapé ---------- */
+.rodape {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    color: var(--cinza);
+}
+
+.link {
+    background: none;
+    border: 0;
+    color: var(--tinta);
+    text-decoration: underline;
+}
+
+.escondido {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+@media (max-width: 860px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .credencial {
+        padding: 44px 16px 20px;
+    }
+
+    .col-curso {
+        display: none;
+    }
+
+    th,
+    td {
+        padding: 8px 4px;
+    }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneio de SI | Inscrições</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topo">
+        <h1>Torneio de SI</h1>
+        <p>Inscrições abertas para Free Fire, Clash Royale e Xadrez. Cada pessoa joga uma modalidade.</p>
+    </header>
+
+    <p id="aviso-carregando" class="aviso">Carregando o banco de dados…</p>
+
+    <main id="app" hidden>
+        <!-- ficha de inscrição em formato de credencial -->
+        <section class="credencial" aria-labelledby="titulo-ficha">
+            <div class="cordao" aria-hidden="true"></div>
+            <h2 id="titulo-ficha">Ficha de inscrição</h2>
+
+            <form id="formulario" novalidate>
+                <label>
+                    Nome completo
+                    <input type="text" id="nome" maxlength="80" autocomplete="off">
+                </label>
+
+                <label>
+                    E-mail
+                    <input type="email" id="email" maxlength="120" autocomplete="off">
+                </label>
+
+                <div class="linha">
+                    <label>
+                        Curso
+                        <select id="curso">
+                            <option value="">Escolha</option>
+                            <option>Sistemas de Informação</option>
+                            <option>Ciência da Computação</option>
+                            <option>Engenharia de Software</option>
+                            <option>Outro curso</option>
+                        </select>
+                    </label>
+                    <label class="periodo">
+                        Período
+                        <select id="periodo">
+                            <option value="">-</option>
+                            <option>1</option><option>2</option><option>3</option>
+                            <option>4</option><option>5</option><option>6</option>
+                            <option>7</option><option>8</option><option>9</option>
+                            <option>10</option>
+                        </select>
+                    </label>
+                </div>
+
+                <fieldset>
+                    <legend>Modalidade</legend>
+                    <div id="opcoes-modalidade"></div>
+                </fieldset>
+
+                <p id="erro" class="erro" role="alert"></p>
+                <button type="submit">Confirmar inscrição</button>
+            </form>
+
+            <div id="confirmacao" class="confirmacao" hidden aria-live="polite"></div>
+        </section>
+
+        <div class="painel">
+            <section aria-labelledby="titulo-vagas">
+                <h2 id="titulo-vagas">Vagas</h2>
+                <ul id="vagas" class="vagas"></ul>
+            </section>
+
+            <section aria-labelledby="titulo-inscritos">
+                <h2 id="titulo-inscritos">Inscritos</h2>
+
+                <div class="filtros">
+                    <label>
+                        Buscar por nome
+                        <input type="search" id="busca" autocomplete="off">
+                    </label>
+                    <label>
+                        Modalidade
+                        <select id="filtro-modalidade">
+                            <option value="0">Todas</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="tabela">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nº</th>
+                                <th>Nome</th>
+                                <th class="col-curso">Curso</th>
+                                <th>Modalidade</th>
+                                <th><span class="escondido">Ação</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista"></tbody>
+                    </table>
+                </div>
+                <p id="vazio" class="vazio" hidden></p>
+            </section>
+
+            <section class="sql" aria-labelledby="titulo-sql">
+                <h2 id="titulo-sql">SQL que acabou de rodar</h2>
+                <pre id="sql-comando"><code>Faça uma inscrição ou uma busca para ver o comando aqui.</code></pre>
+                <p id="sql-detalhes"></p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <p>Os dados ficam salvos só neste navegador.</p>
+        <button type="button" id="recomecar" class="link">Apagar tudo e voltar aos exemplos</button>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sql.js@1.11.0/dist/sql-wasm.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
